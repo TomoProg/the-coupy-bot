@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+  nginx:
+    build: ../nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    links:
+      - web
+    volumes:
+      - ../nginx/conf.d:/etc/nginx/conf.d
+
+  db:
+    build: ../db
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_PASSWD
+    ports:
+      - "13306:3306"
+    volumes:
+      - ../db/script:/var/script
+    volumes_from:
+      - container:db_data
+
+  web:
+    build: ../web
+    container_name: web
+    volumes:
+      - ../web/app:/app
+      - ../web/script:/var/script
+    command: /var/script/production.sh
+    environment:
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_PASSWD: $MYSQL_PASSWD
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      MYSQL_HOST: 'db'
+    ports:
+      - "3000:3000"
+    links:
+      - db

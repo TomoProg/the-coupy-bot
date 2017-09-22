@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  db_data:
+    image: busybox
+    container_name: db_data
+    volumes:
+      - /var/lib/mysql
+    tty: true
+
