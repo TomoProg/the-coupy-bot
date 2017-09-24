@@ -55,3 +55,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Linebot
 gem 'line-bot-api'
+
+# ユーザ認証用
+gem 'devise'
