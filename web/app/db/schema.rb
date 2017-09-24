@@ -12,14 +12,14 @@
 
 ActiveRecord::Schema.define(version: 20170924023444) do
 
-  create_table "keywords", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "keywords", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "send_msg"
     t.string "response_msg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "managers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "managers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
