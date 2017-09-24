@@ -6,10 +6,12 @@ services:
     container_name: nginx
     ports:
       - "80:80"
+      - "443:443"
     links:
       - web
     volumes:
       - ../nginx/conf.d:/etc/nginx/conf.d
+      - ../nginx/ssl_dummy_key:/etc/nginx/ssl_dummy_key
 
   db:
     build: ../db
