@@ -1,4 +1,4 @@
-class Page::LinebotController < ApplicationController
+class Page::LinebotController < Page::BaseController
   require 'line/bot'
   protect_from_forgery :except => [:callback]
 

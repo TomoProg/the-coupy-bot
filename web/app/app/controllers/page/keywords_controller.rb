@@ -1,4 +1,4 @@
-class Page::KeywordsController < ApplicationController
+class Page::KeywordsController < Page::BaseController
   before_action :set_keyword, only: [:show, :edit, :update, :destroy]
 
   # GET /keywords
