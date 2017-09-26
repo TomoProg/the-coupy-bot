@@ -1,26 +1,43 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<%
+  content_for(:body_class) do
+    "login-page"
+  end
+%>
+<div class="login-box">
+  <div class="login-logo">
+    <b>The Coupy</b>
   </div>
+  <div class="login-box-body">
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group has-feedback">
+          <%= f.label :email %><br/>
+          <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'E-mail' %>
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+
+        <div class="form-group has-feedback">
+          <%= f.label :password %><br/>
+          <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-8">
+            <% if devise_mapping.rememberable? -%>
+                <div class="field">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
+                </div>
+            <% end -%>
+          </div>
+
+          <div class="col-xs-4">
+            <div class="actions">
+              <%= f.button "Log in", type: 'submit', class: 'btn btn-primary btn-block btn-flat' %>
+            </div>
+          </div>
+        </div>
+    <% end %>
   </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "admin/managers/shared/links" %>
+</div>
