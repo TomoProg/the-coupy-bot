@@ -1,14 +1,24 @@
-<%
-  content_for(:body_class) do
-    "login-page"
-  end
-%>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>The Coupy 管理コンソール</title>
+  <%= csrf_meta_tags %>
+  <%= render partial: 'layouts/admin/common_css' %>
+  <%= render partial: 'layouts/admin/common_js' %>
+</head>
+<body class="login-page">
+<%# メッセージ表示場所 %>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 <div class="login-box">
   <div class="login-logo">
     <b>The Coupy</b>
   </div>
   <div class="login-box-body">
-
+    <p class="login-box-msg">
+      Sign in to start your session
+    </p>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group has-feedback">
           <%= f.label :email %><br/>
@@ -31,7 +41,6 @@
                 </div>
             <% end -%>
           </div>
-
           <div class="col-xs-4">
             <div class="actions">
               <%= f.button "Log in", type: 'submit', class: 'btn btn-primary btn-block btn-flat' %>
@@ -41,3 +50,5 @@
     <% end %>
   </div>
 </div>
+</body>
+</html>
